@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextBox = ({ toggle, setToggle }) => {
+const TextBox = ({ toggle, setToggle, speakText, setText }) => {
   return (
     <div className={`text-box ${toggle ? "show" : ""}  `}>
       <div onClick={() => setToggle(!toggle)} className="close">

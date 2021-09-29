@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import TextBox from "./components/TextBox";
 import Box from "./components/Box";
 
 const App = () => {
+  const synthRef = useRef(window.speechSynthesis);
   const [toggle, setToggle] = useState(false);
-  // function show() {
-  //   console.log("hy");
-  // }
+  const [text, setText] = useState();
+
+  function speakText(text) {
+    const utterThis = new SpeechSynthesisUtterance(text);
+    synthRef.current.speak(utterThis);
+  }
+
   return (
     <div className="container">
       <h1>Speech Text Reader</h1>
@@ -18,8 +23,13 @@ const App = () => {
       >
         Toggle Text Box
       </button>
-      <TextBox setToggle={setToggle} toggle={toggle} />
-      <Box />
+      <TextBox
+        setToggle={setToggle}
+        toggle={toggle}
+        speakText={speakText}
+        setText={setText}
+      />
+      <Box speakText={speakText} setText={setText} />
     </div>
   );
 };
