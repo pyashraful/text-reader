@@ -18,7 +18,7 @@ const App = () => {
       >
         Toggle Text Box
       </button>
-      <TextBox toggle={toggle} />
+      <TextBox setToggle={setToggle} toggle={toggle} />
       <Box />
     </div>
   );
