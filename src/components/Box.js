@@ -3,7 +3,7 @@ import data from "../data";
 
 const Box = ({ speakText, setText }) => {
   const res = data();
-  console.log(speakText);
+  // console.log(speakText);
   return (
     <div className="main">
       {res.map((d) => (

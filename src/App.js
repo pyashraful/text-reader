@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import TextBox from "./components/TextBox";
 import Box from "./components/Box";
@@ -7,11 +7,19 @@ const App = () => {
   const synthRef = useRef(window.speechSynthesis);
   const [toggle, setToggle] = useState(false);
   const [text, setText] = useState();
+  const [voices, setVoices] = useState();
 
   function speakText(text) {
     const utterThis = new SpeechSynthesisUtterance(text);
     synthRef.current.speak(utterThis);
   }
+
+  // synthRef.current.getVoices();
+  console.log(voices);
+
+  useEffect(() => {
+    setVoices(synthRef.current.getVoices());
+  }, []);
 
   return (
     <div className="container">
@@ -28,6 +36,8 @@ const App = () => {
         toggle={toggle}
         speakText={speakText}
         setText={setText}
+        voices={voices}
+        setVoices={setVoices}
       />
       <Box speakText={speakText} setText={setText} />
     </div>
