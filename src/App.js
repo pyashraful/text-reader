@@ -8,6 +8,7 @@ const App = () => {
   const [toggle, setToggle] = useState(false);
   const [text, setText] = useState();
   const [voices, setVoices] = useState();
+  const [selected, setSelected] = useState();
 
   function speakText(text) {
     const utterThis = new SpeechSynthesisUtterance(text);
@@ -38,6 +39,7 @@ const App = () => {
         setText={setText}
         voices={voices}
         setVoices={setVoices}
+        setSelected={setSelected}
       />
       <Box speakText={speakText} setText={setText} />
     </div>

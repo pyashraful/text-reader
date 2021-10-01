@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
-const TextBox = ({ toggle, setToggle, speakText, setText, voices }) => {
+const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
   const [massage, setMassage] = useState("");
+  const [selectedOption, setSelectedOption] = useState(voices[0].name);
   console.log(massage);
+
+  function handleChange(e) {
+    setSelectedOption(e.target.value);
+    setSelected(selectedOption);
+  }
 
   return (
     <div className={`text-box ${toggle ? "show" : ""}  `}>
@@ -10,7 +16,11 @@ const TextBox = ({ toggle, setToggle, speakText, setText, voices }) => {
         X
       </div>
       <h3>Choose Voice</h3>
-      <select className="voices">
+      <select
+        className="voices"
+        value={selectedOption}
+        onChange={(e) => handleChange}
+      >
         {voices &&
           voices.map((voice, index) => (
             <option key={index} value={voice.name}>
