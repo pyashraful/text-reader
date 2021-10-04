@@ -5,6 +5,7 @@ import Box from "./components/Box";
 
 const App = () => {
   const synthRef = useRef(window.speechSynthesis);
+  const chRef = useRef(window.speechSynthesis);
   const [toggle, setToggle] = useState(false);
   const [text, setText] = useState();
   const [voices, setVoices] = useState();
@@ -12,16 +13,18 @@ const App = () => {
 
   function speakText(text) {
     const utterThis = new SpeechSynthesisUtterance(text);
+    utterThis.voice = voices.find((voice) => voice.name === selected);
     synthRef.current.speak(utterThis);
   }
 
   // synthRef.current.getVoices();
-  console.log(voices);
 
   useEffect(() => {
     setVoices(synthRef.current.getVoices());
   }, []);
 
+  console.log(synthRef);
+  console.log(chRef.current);
   return (
     <div className="container">
       <h1>Speech Text Reader</h1>

@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
   const [massage, setMassage] = useState("");
-  const [selectedOption, setSelectedOption] = useState(voices[0].name);
+  const [selectedOption, setSelectedOption] = useState();
   console.log(massage);
 
   function handleChange(e) {
     setSelectedOption(e.target.value);
     setSelected(selectedOption);
   }
+
+  useEffect(() => {
+    setSelectedOption(voices ? voices[0].name : "");
+  }, [voices]);
 
   return (
     <div className={`text-box ${toggle ? "show" : ""}  `}>
