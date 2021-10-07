@@ -6,6 +6,7 @@ const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
   console.log(massage);
 
   function handleChange(e) {
+    console.log(e.target.value);
     setSelectedOption(e.target.value);
     setSelected(selectedOption);
   }
@@ -20,11 +21,7 @@ const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
         X
       </div>
       <h3>Choose Voice</h3>
-      <select
-        className="voices"
-        value={selectedOption}
-        onChange={(e) => handleChange}
-      >
+      <select className="voices" value={selectedOption} onChange={handleChange}>
         {voices &&
           voices.map((voice, index) => (
             <option key={index} value={voice.name}>

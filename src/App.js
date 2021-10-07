@@ -7,7 +7,6 @@ const App = () => {
   const synthRef = useRef(window.speechSynthesis);
   const chRef = useRef(window.speechSynthesis);
   const [toggle, setToggle] = useState(false);
-  const [text, setText] = useState();
   const [voices, setVoices] = useState();
   const [selected, setSelected] = useState();
 
@@ -16,8 +15,6 @@ const App = () => {
     utterThis.voice = voices.find((voice) => voice.name === selected);
     synthRef.current.speak(utterThis);
   }
-
-  // synthRef.current.getVoices();
 
   useEffect(() => {
     setVoices(synthRef.current.getVoices());
@@ -39,12 +36,11 @@ const App = () => {
         setToggle={setToggle}
         toggle={toggle}
         speakText={speakText}
-        setText={setText}
         voices={voices}
         setVoices={setVoices}
         setSelected={setSelected}
       />
-      <Box speakText={speakText} setText={setText} />
+      <Box speakText={speakText} />
     </div>
   );
 };
