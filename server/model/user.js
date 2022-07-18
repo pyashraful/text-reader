@@ -12,10 +12,7 @@ const users = mongoose.Schema(
       required: true,
       trim: true,
       lowercase: true,
-    },
-    mobile: {
-      type: String,
-      required: true,
+      unique: true,
     },
     password: {
       type: String,
