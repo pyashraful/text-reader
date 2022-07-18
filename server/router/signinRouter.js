@@ -1,9 +1,8 @@
 import express from "express";
+import signin from "../controller/signin.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  return res.json({ msg: "signin" });
-});
+router.get("/", signin);
 
 export default router;
