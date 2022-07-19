@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import TextBox from "./components/TextBox";
 import Box from "./components/Box";
+import Nav from "./components/Nav";
 
 const App = () => {
   const synthRef = useRef(window.speechSynthesis);
@@ -23,25 +24,29 @@ const App = () => {
   console.log(synthRef);
   console.log(chRef.current);
   return (
-    <div className="container">
-      <h1>Speech Text Reader</h1>
-      <button
-        type="button"
-        onClick={() => setToggle(!toggle)}
-        className="btn btn-toggle"
-      >
-        Toggle Text Box
-      </button>
-      <TextBox
-        setToggle={setToggle}
-        toggle={toggle}
-        speakText={speakText}
-        voices={voices}
-        setVoices={setVoices}
-        setSelected={setSelected}
-      />
-      <Box speakText={speakText} />
-    </div>
+    <>
+      <Nav />
+      <div className="container">
+        {/* <h1>Speech Text Reader</h1> */}
+
+        <button
+          type="button"
+          onClick={() => setToggle(!toggle)}
+          className="btn btn-toggle"
+        >
+          Toggle Text Box
+        </button>
+        <TextBox
+          setToggle={setToggle}
+          toggle={toggle}
+          speakText={speakText}
+          voices={voices}
+          setVoices={setVoices}
+          setSelected={setSelected}
+        />
+        <Box speakText={speakText} />
+      </div>
+    </>
   );
 };
 
