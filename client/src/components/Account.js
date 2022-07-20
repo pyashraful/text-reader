@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function Account() {
   return (
     <div className="account">
@@ -17,8 +17,8 @@ export default function Account() {
         </span>
       </div>
 
-      <div>signup</div>
-      <div>signin</div>
+      <Link to="/register">signup</Link>
+      <Link to="/login">signin</Link>
     </div>
   );
 }

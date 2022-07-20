@@ -1,53 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
-import "./App.css";
-import TextBox from "./components/TextBox";
-import Box from "./components/Box";
-import Nav from "./components/Nav";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
-const App = () => {
-  const synthRef = useRef(window.speechSynthesis);
-  const chRef = useRef(window.speechSynthesis);
-  const [toggle, setToggle] = useState(false);
-  const [voices, setVoices] = useState();
-  const [selected, setSelected] = useState();
-
-  function speakText(text) {
-    const utterThis = new SpeechSynthesisUtterance(text);
-    utterThis.voice = voices.find((voice) => voice.name === selected);
-    synthRef.current.speak(utterThis);
-  }
-
-  useEffect(() => {
-    setVoices(synthRef.current.getVoices());
-  }, []);
-
-  console.log(synthRef);
-  console.log(chRef.current);
+function App() {
   return (
-    <>
-      <Nav />
-      <div className="container">
-        {/* <h1>Speech Text Reader</h1> */}
-
-        <button
-          type="button"
-          onClick={() => setToggle(!toggle)}
-          className="btn btn-toggle"
-        >
-          Toggle Text Box
-        </button>
-        <TextBox
-          setToggle={setToggle}
-          toggle={toggle}
-          speakText={speakText}
-          voices={voices}
-          setVoices={setVoices}
-          setSelected={setSelected}
-        />
-        <Box speakText={speakText} />
-      </div>
-    </>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
-};
+}
 
 export default App;

@@ -5,6 +5,14 @@
   box-sizing: border-box;
   /* margin: 0; */
 }
+:root {
+  --bodyBackground: #f2f4f8;
+  --successGreen: #00ff84;
+  --dangerRed: #ffc0c7;
+  --questionBG: #e4e8ee;
+  --fontPrimary: #002333;
+  --active: #2dbf64;
+}
 
 body {
   background: #ffefea;
@@ -211,3 +219,16 @@ select:focus {
     grid-template-columns: 1fr;
   }
 }
+
+/*  */
+.info {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.form {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/*  */
