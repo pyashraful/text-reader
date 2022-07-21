@@ -10,8 +10,19 @@ const register = async (userData) => {
   return response.data;
 };
 
+const logout = async () => {
+  const response = await axios.post("/logout");
+
+  if (response.status === 200) {
+    localStorage.removeItem("user");
+  }
+
+  return response.data;
+};
+
 const authService = {
   register,
+  logout,
 };
 
 export default authService;
