@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import TextInput from "../components/TextInput";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { register, reset } from "../feactures/auth/authSlice";
+import { toast } from "react-toastify";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -14,15 +17,48 @@ function Register() {
 
   const { name, email, password, confirmPassword } = formData;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, massage } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(massage);
+    }
+
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, massage, dispatch, navigate]);
+
   const onChange = (e) => {
-    e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+    } else {
+      const formData = {
+        name,
+        email,
+        password,
+      };
+      dispatch(register(formData));
+    }
   };
 
   return (
     <div className="form">
       <h1>Create an account</h1>
-      <Form style={{ height: "460px" }}>
+      <Form style={{ height: "460px" }} onSubmit={onSubmit}>
         <TextInput
           required
           type="text"

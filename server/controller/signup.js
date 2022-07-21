@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import cookie from "cookie";
 
 async function signup(req, res) {
+  console.log("🚀 ~ file: signup.js ~ line 7 ~ signup ~ req", req.body);
+
   const { name, email, password } = req.body;
   const user = new Users({
     name,
