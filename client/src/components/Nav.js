@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Account from "./Account";
+import AddCart from "./AddCard";
 
 export default function Nav() {
+  const [toggle, setToggle] = useState(false);
+
   return (
     <div className="header">
       <header>
@@ -17,7 +20,7 @@ export default function Nav() {
         <nav>
           <ul className="nav_links">
             <li>
-              <a href="#">add card</a>
+              <AddCart />
             </li>
             <li>
               <a href="#">Text Box</a>

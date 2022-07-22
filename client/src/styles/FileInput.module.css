@@ -1,0 +1,8 @@
+.file_upload {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload_button {
+  width: unset;
+}

@@ -1,0 +1,13 @@
+.file_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  min-height: 300px;
+  border: 1px solid #ccc;
+}
+
+.file_textarea {
+  width: 100%;
+  height: 100%;
+}

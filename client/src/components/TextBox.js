@@ -34,7 +34,7 @@ const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
         onChange={(e) => setMassage(e.target.value)}
         placeholder="Enter text to read..."
       ></textarea>
-      <button onClick={() => speakText(massage)} className="btn">
+      <button onClick={() => speakText(massage)} className="btn text_btn">
         Read Text
       </button>
     </div>
