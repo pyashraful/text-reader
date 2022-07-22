@@ -3,7 +3,7 @@ import Account from "./Account";
 
 export default function Nav() {
   return (
-    <div class="header">
+    <div className="header">
       <header>
         <h1 className="logo">
           {/* <a href="#">

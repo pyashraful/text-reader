@@ -9,6 +9,7 @@ async function Logout(req, res) {
         path: "/",
       })
     );
+    console.log("logout server");
     res.send({ message: "Logout success" });
   } catch (err) {
     console.log("🚀 ~ file: logout.js ~ line 15 ~ validateRoute ~ err", err);

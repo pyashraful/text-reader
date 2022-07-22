@@ -4,7 +4,7 @@ import authService from "./authService";
 const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
-  user: null,
+  user: user ? user : null,
   isLoading: false,
   isError: false,
   isSuccess: false,
@@ -45,7 +45,7 @@ export const logout = createAsyncThunk(
   "auth/logout",
   async (user, thunkApi) => {
     try {
-      await authService.logout();
+      return await authService.logout();
     } catch (error) {
       const massage =
         (error.response &&
