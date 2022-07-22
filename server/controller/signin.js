@@ -6,6 +6,7 @@ import cookie from "cookie";
 async function signin(req, res) {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
+
   if (user && bcrypt.compareSync(password, user.password)) {
     const token = jwt.sign(
       { id: user._id, name: user.name, email: user.email },
