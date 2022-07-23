@@ -9,9 +9,11 @@ function FileInput({ image, setImage }) {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      file.myCustomName = "my-new-name" + file.name;
-      console.log(file.myCustomName);
+      let file = acceptedFiles[0];
+      file = new File([file], `ashraful_${+new Date()}`, {
+        type: file.type,
+      });
+      console.log(file);
       const reader = new FileReader();
       reader.onloadstart = () => {
         setLoading(true);
