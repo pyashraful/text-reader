@@ -144,7 +144,7 @@ select:focus {
   width: 100%;
 }
 
-.text-box textarea {
+textarea {
   border: 1px #dadada solid;
   border-radius: 4px;
   font-size: 16px;
