@@ -1,25 +1,23 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
+import "dotenv/config";
 import http from "http";
+import cookieParser from "cookie-parser";
 import signinRouter from "./router/signinRouter.js";
 import signupRouter from "./router/signupRouter.js";
 import logoutRouter from "./router/logoutRouter.js";
+import imageRouter from "./router/imageRouter.js";
 
 const app = express();
-dotenv.config();
 
 const server = http.createServer(app);
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-console.log(
-  "🚀 ~ file: index.js ~ line 21 ~ process.env.MONGO_CONNECTION_STRING",
-  process.env.MONGO_CONNECTION_STRING
-);
 mongoose
   .connect(process.env.MONGO_CONNECTION_STRING, {
     useNewUrlParser: true,
@@ -40,6 +38,7 @@ mongoose
 app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
 app.use("/logout", logoutRouter);
+app.use("/image", imageRouter);
 
 server.listen(process.env.PORT || 5000, () => {
   console.log(`app listening to port ${process.env.PORT}`);

@@ -29,7 +29,12 @@ function FileInput({ image, setImage }) {
     },
     [setImage]
   );
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, open } = useDropzone({
+    // Disable click and keydown behavior
+    noClick: true,
+    noKeyboard: true,
+    onDrop,
+  });
 
   return (
     <div>
@@ -50,7 +55,11 @@ function FileInput({ image, setImage }) {
         <div className={classes.file_upload} {...getRootProps()}>
           <input {...getInputProps()} />
           <h5>Drag & drop image here</h5>
-          <button className={`btn ${classes.upload_button}`}>
+          <button
+            type="button"
+            className={`btn ${classes.upload_button}`}
+            onClick={open}
+          >
             select file
           </button>
           <small>Upload 280*280 image</small>

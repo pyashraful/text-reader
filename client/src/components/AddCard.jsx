@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import DropBox from "./DropBox";
 import classes from "../styles/AddCard.module.css";
 import FileInput from "./FileInput";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function AddCard() {
   const [toggle, setToggle] = useState(false);
@@ -12,9 +14,32 @@ function AddCard() {
     setText(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(text);
+
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("text", text);
+
+    try {
+      const response = await axios({
+        method: "post",
+        url: "/image",
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
+
+      if (response.statusCode === 200) {
+        toast.success("Card added successfully");
+        setImage(null);
+        setText("");
+      }
+    } catch (err) {
+      toast.error("Error adding card");
+    }
   };
 
   return (
@@ -35,8 +60,10 @@ function AddCard() {
             placeholder="Enter text here..."
             value={text}
             onChange={onChange}
+            required
+            className="text-input"
           />
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </DropBox>
     </>
