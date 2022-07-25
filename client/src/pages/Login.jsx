@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { login, reset } from "../feactures/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { MdAlternateEmail } from "react-icons/md";
+import { MdOutlineLock } from "react-icons/md";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -56,7 +58,7 @@ function Login() {
           required
           type="text"
           placeholder="Enter email"
-          icon="alternate_email"
+          icon={<MdAlternateEmail />}
           name="email"
           value={email}
           onChange={onChange}
@@ -65,7 +67,7 @@ function Login() {
           required
           type="password"
           placeholder="Enter password"
-          icon="lock"
+          icon={<MdOutlineLock />}
           name="password"
           value={password}
           onChange={onChange}

@@ -16,6 +16,10 @@ const login = async (userData) => {
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
   }
+  console.log(
+    "🚀 ~ file: authService.js ~ line 17 ~ login ~ response.data",
+    response.data
+  );
   return response.data;
 };
 

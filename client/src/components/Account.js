@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../feactures/auth/authSlice";
+import { MdLogout } from "react-icons/md";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 export default function Account() {
   const { user } = useSelector((state) => state.auth);
@@ -17,17 +19,9 @@ export default function Account() {
     <div className="account">
       {user ? (
         <>
-          <span className="material-icons-outlined" title="Account">
-            account_circle
-          </span>
-          <span>Ashrafull</span>
-          <span
-            className="material-icons-outlined"
-            title="Logout"
-            onClick={onLogout}
-          >
-            logout
-          </span>
+          <MdOutlineAccountCircle />
+          <span>{user.name}</span>
+          <MdLogout onClick={onLogout} />
         </>
       ) : (
         <>

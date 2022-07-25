@@ -61,9 +61,11 @@ function AddCard() {
             value={text}
             onChange={onChange}
             required
-            className="text-input"
+            className={classes.text_input}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className={`btn ${classes.card_submit}`}>
+            Submit
+          </button>
         </form>
       </DropBox>
     </>

@@ -6,6 +6,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { register, reset } from "../feactures/auth/authSlice";
 import { toast } from "react-toastify";
+import { MdOutlineLock } from "react-icons/md";
+import { MdOutlinePerson } from "react-icons/md";
+import { MdAlternateEmail } from "react-icons/md";
+import { MdOutlineLockClock } from "react-icons/md";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -33,7 +37,7 @@ function Register() {
       navigate("/");
     }
 
-    console.log("Effect")
+    console.log("Effect");
 
     dispatch(reset());
   }, [user, isError, isSuccess, massage, dispatch, navigate]);
@@ -65,7 +69,7 @@ function Register() {
           required
           type="text"
           placeholder="Enter name"
-          icon="person"
+          icon={<MdOutlinePerson />}
           name="name"
           value={name}
           onChange={onChange}
@@ -74,7 +78,7 @@ function Register() {
           type="text"
           required
           placeholder="Enter email"
-          icon="alternate_email"
+          icon={<MdAlternateEmail />}
           name="email"
           value={email}
           onChange={onChange}
@@ -83,7 +87,7 @@ function Register() {
           type="password"
           required
           placeholder="Enter password"
-          icon="lock"
+          icon={<MdOutlineLock />}
           name="password"
           value={password}
           onChange={onChange}
@@ -92,7 +96,7 @@ function Register() {
           required
           type="password"
           placeholder="confirm password"
-          icon="lock_clock"
+          icon={<MdOutlineLockClock />}
           name="confirmPassword"
           value={confirmPassword}
           onChange={onChange}

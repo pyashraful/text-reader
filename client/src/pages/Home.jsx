@@ -11,6 +11,7 @@ function Home() {
   const [selected, setSelected] = useState();
 
   function speakText(text) {
+    console.log("🚀 ~ file: Home.jsx ~ line 14 ~ speakText ~ text", text);
     const utterThis = new SpeechSynthesisUtterance(text);
     utterThis.voice = voices.find((voice) => voice.name === selected);
     synthRef.current.speak(utterThis);

@@ -48,7 +48,11 @@ function FileInput({ image, setImage }) {
             />
           </div>
           <button className={classes.delete_button}>
-            <MdDeleteOutline size={24} onClick={() => setImage(null)} />
+            <MdDeleteOutline
+              className={classes.delete_icon}
+              size={24}
+              onClick={() => setImage(null)}
+            />
           </button>
         </div>
       ) : (
