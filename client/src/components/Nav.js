@@ -12,7 +12,7 @@ export default function Nav() {
         <div className="logo">
           <Link to="/">
             <img
-              classname="logo_image"
+              className="logo_image"
               src="logo12.png"
               alt="Wall of Wonder. Click for home."
             />

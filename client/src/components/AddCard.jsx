@@ -4,11 +4,15 @@ import classes from "../styles/AddCard.module.css";
 import FileInput from "./FileInput";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { setCard, reset } from "../feactures/card/cardSlice";
 
 function AddCard() {
   const [toggle, setToggle] = useState(false);
   const [image, setImage] = useState();
   const [text, setText] = useState("");
+
+  const dispatch = useDispatch();
 
   const onChange = (e) => {
     setText(e.target.value);
@@ -21,25 +25,27 @@ function AddCard() {
     formData.append("file", image);
     formData.append("text", text);
 
-    try {
-      const response = await axios({
-        method: "post",
-        url: "/image",
-        data: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-      });
+    dispatch(setCard(formData));
 
-      if (response.statusCode === 200) {
-        toast.success("Card added successfully");
-        setImage(null);
-        setText("");
-      }
-    } catch (err) {
-      toast.error("Error adding card");
-    }
+    // try {
+    //   const response = await axios({
+    //     method: "post",
+    //     url: "/card",
+    //     data: formData,
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //     withCredentials: true,
+    //   });
+
+    //   if (response.statusCode === 200) {
+    //     toast.success("Card added successfully");
+    //     setImage(null);
+    //     setText("");
+    //   }
+    // } catch (err) {
+    //   toast.error("Error adding card");
+    // }
   };
 
   return (

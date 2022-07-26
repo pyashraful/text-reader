@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import signinRouter from "./router/signinRouter.js";
 import signupRouter from "./router/signupRouter.js";
 import logoutRouter from "./router/logoutRouter.js";
-import imageRouter from "./router/imageRouter.js";
+import cardRouter from "./router/cardRouter.js";
 
 const app = express();
 
@@ -38,7 +38,7 @@ mongoose
 app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
 app.use("/logout", logoutRouter);
-app.use("/image", imageRouter);
+app.use("/card", cardRouter);
 
 server.listen(process.env.PORT || 5000, () => {
   console.log(`app listening to port ${process.env.PORT}`);

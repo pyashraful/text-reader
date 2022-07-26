@@ -23,7 +23,6 @@ async function validate(req, res, next) {
         next();
       }
     } catch (e) {
-      console.log("🚀 ~ file: validate.js ~ line 24 ~ validate ~ e", e);
       return res.status(401).send("Unauthorized");
     }
   } else {

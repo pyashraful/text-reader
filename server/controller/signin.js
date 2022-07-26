@@ -5,6 +5,8 @@ import cookie from "cookie";
 
 async function signin(req, res) {
   const { email, password } = req.body;
+  console.log("🚀 ~ file: signin.js ~ line 8 ~ signin ~ req.body", req.body);
+
   const user = await User.findOne({ email });
 
   if (user && bcrypt.compareSync(password, user.password)) {

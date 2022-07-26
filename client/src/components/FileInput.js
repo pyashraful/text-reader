@@ -10,9 +10,10 @@ function FileInput({ image, setImage }) {
   const onDrop = useCallback(
     (acceptedFiles) => {
       let file = acceptedFiles[0];
-      file = new File([file], `ashraful_${+new Date()}`, {
-        type: file.type,
-      });
+      console.log("🚀 ~ file: FileInput.js ~ line 13 ~ FileInput ~ file", file);
+      // file = new File([file], `ashraful_${+new Date()}`, {
+      //   type: file.type,
+      // });
       console.log(file);
       const reader = new FileReader();
       reader.onloadstart = () => {
@@ -26,8 +27,10 @@ function FileInput({ image, setImage }) {
       };
       reader.readAsDataURL(file);
       setImage(file);
+      setImage(file);
+      console.log(image);
     },
-    [setImage]
+    [image, setImage]
   );
   const { getRootProps, getInputProps, open } = useDropzone({
     // Disable click and keydown behavior
