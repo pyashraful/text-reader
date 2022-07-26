@@ -23,7 +23,7 @@ function Home() {
 
   useEffect(() => {
     const vo = synthRef.current.getVoices().map((v) => v.name);
-    dispatch(getVoices({ ...vo }));
+    dispatch(getVoices([...vo]));
     setVoices(synthRef.current.getVoices());
   }, [dispatch]);
 

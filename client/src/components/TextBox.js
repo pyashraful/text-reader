@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getVoices } from "../feactures/speak/speakSlice";
 
-const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
+const TextBox = ({ toggle, setToggle, speakText, setSelected }) => {
   const [massage, setMassage] = useState("");
   const [selectedOption, setSelectedOption] = useState();
+
+  const { voices } = useSelector((state) => state.speak);
+  console.log("🚀 ~ file: TextBox.js ~ line 10 ~ TextBox ~ voices", voices);
 
   function handleChange(e) {
     console.log(e.target.value);
@@ -10,9 +15,9 @@ const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
     setSelected(selectedOption);
   }
 
-  useEffect(() => {
-    setSelectedOption(voices ? voices[0].name : "");
-  }, [voices]);
+  // useEffect(() => {
+  //   setSelectedOption(voices ? voices[0].name : "");
+  // }, [voices]);
 
   return (
     <div className={`text-box ${toggle ? "show" : ""}  `}>
@@ -23,8 +28,8 @@ const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
       <select className="voices" value={selectedOption} onChange={handleChange}>
         {voices &&
           voices.map((voice, index) => (
-            <option key={index} value={voice.name}>
-              {voice.name}
+            <option key={index} value={voice}>
+              {voice}
             </option>
           ))}
       </select>
