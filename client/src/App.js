@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import { ToastContainer } from "react-toastify";
@@ -9,6 +10,20 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 function App() {
+  // const synthRef = useRef(window.speechSynthesis);
+  // const [voices, setVoices] = useState();
+  // const [selected, setSelected] = useState();
+
+  // function speakText(text) {
+  //   const utterThis = new SpeechSynthesisUtterance(text);
+  //   utterThis.voice = voices.find((voice) => voice.name === selected);
+  //   synthRef.current.speak(utterThis);
+  // }
+
+  // useEffect(() => {
+  //   setVoices(synthRef.current.getVoices());
+  // }, []);
+
   return (
     <>
       <Router>

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 const TextBox = ({ toggle, setToggle, speakText, setSelected, voices }) => {
   const [massage, setMassage] = useState("");
   const [selectedOption, setSelectedOption] = useState();
-  console.log(massage);
 
   function handleChange(e) {
     console.log(e.target.value);
