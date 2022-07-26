@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-  synth: null,
-  utter: null,
   voices: [],
   selected: "",
 };

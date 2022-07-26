@@ -6,14 +6,15 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { setCard, reset } from "../feactures/card/cardSlice";
+import { useNavigate } from "react-router-dom";
 
 function AddCard() {
   const [toggle, setToggle] = useState(false);
   const [image, setImage] = useState();
   const [text, setText] = useState("");
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const { user } = useSelector((state) => state.auth);
   const onChange = (e) => {
     setText(e.target.value);
   };
@@ -48,9 +49,17 @@ function AddCard() {
     // }
   };
 
+  const handleToggle = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      setToggle(!toggle);
+    }
+  };
+
   return (
     <>
-      <button onClick={() => setToggle(!toggle)}>add card</button>
+      <button onClick={handleToggle}>add card</button>
       <DropBox toggle={toggle} setToggle={setToggle}>
         <h2>Add Card</h2>
         <form onSubmit={onSubmit}>

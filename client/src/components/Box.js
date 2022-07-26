@@ -4,7 +4,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { getCard, deleteCard, reset } from "../feactures/card/cardSlice";
 
-const Box = ({ speakText, setText }) => {
+const Box = ({ speakText }) => {
   const dispatch = useDispatch();
   const { cards, isLoading, isError, isSuccess, massage } = useSelector(
     (state) => state.card
@@ -18,8 +18,6 @@ const Box = ({ speakText, setText }) => {
     dispatch(deleteCard(id));
   }
 
-  const res = data();
-  // console.log(speakText);
   return (
     <div className="main">
       {cards.map((card, index) => (

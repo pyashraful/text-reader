@@ -4,8 +4,6 @@ import AddCart from "./AddCard";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
-  const [toggle, setToggle] = useState(false);
-
   return (
     <div className="header">
       <header>
