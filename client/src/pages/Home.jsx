@@ -3,7 +3,7 @@ import "../App.css";
 import TextBox from "../components/TextBox";
 import Box from "../components/Box";
 import { useDispatch, useSelector } from "react-redux";
-import { read } from "../feactures/speak/speakSlice";
+import { read, getVoices } from "../feactures/speak/speakSlice";
 
 function Home() {
   const synthRef = useRef(window.speechSynthesis);
@@ -22,8 +22,10 @@ function Home() {
   }
 
   useEffect(() => {
+    const vo = synthRef.current.getVoices().map((v) => v.name);
+    dispatch(getVoices({ ...vo }));
     setVoices(synthRef.current.getVoices());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
