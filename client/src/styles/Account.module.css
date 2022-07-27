@@ -1,0 +1,15 @@
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.account > a {
+  font: 1em;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  background-color: rgb(151, 240, 163);
+  color: #202020;
+  margin-left: 0.75rem;
+  text-transform: uppercase;
+}

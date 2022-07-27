@@ -59,7 +59,9 @@ function AddCard() {
 
   return (
     <>
-      <button onClick={handleToggle}>add card</button>
+      <div onClick={handleToggle} className="nav_button">
+        add card
+      </div>
       <DropBox toggle={toggle} setToggle={setToggle}>
         <h2>Add Card</h2>
         <form onSubmit={onSubmit}>

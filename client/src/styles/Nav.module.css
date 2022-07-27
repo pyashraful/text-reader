@@ -1,0 +1,29 @@
+.nav {
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 82rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+.nav_link {
+  display: flex;
+  align-items: center;
+}
+
+.nav_button_container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav_account_container {
+  display: flex;
+  align-items: center;
+}

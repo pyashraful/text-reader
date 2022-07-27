@@ -34,22 +34,17 @@ h1 {
 .header {
   background: #1a0cf952;
 }
-
+/* 
 header {
   max-width: 1200px;
-  /* background-color: #ffe80f59; */
+  background-color: #ffe80f59;
   margin: 0 auto;
   padding: 20px;
-}
-
-header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
+} 
+*/
 
 .logo {
-  margin-right: auto;
+  /* margin-right: auto; */
   width: 220px;
 }
 
@@ -61,6 +56,22 @@ header {
   display: flex;
   justify-content: space-between;
 } */
+
+.nav_button {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #202020;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 0.35rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nav_button:hover {
+  background-color: #002333;
+  color: #fff;
+}
 
 /* account */
 .account {

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../feactures/auth/authSlice";
 import { MdLogout } from "react-icons/md";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import classes from "../styles/Account.module.css";
 
 export default function Account() {
   const { user } = useSelector((state) => state.auth);
@@ -16,7 +17,7 @@ export default function Account() {
   }
 
   return (
-    <div className="account">
+    <div className={classes.account}>
       {user ? (
         <>
           <MdOutlineAccountCircle />
