@@ -34,9 +34,10 @@ export const login = createAsyncThunk("auth/login", async (user, thunkApi) => {
     return await authService.login(user);
   } catch (error) {
     const massage =
-      (error.response && error.response.data && error.response.data.message) ||
+      (error.response && error.response.data && error.response.data.error) ||
       error.message ||
       error.toString();
+
     return thunkApi.rejectWithValue({ massage });
   }
 });

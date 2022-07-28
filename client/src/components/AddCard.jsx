@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DropBox from "./DropBox";
 import classes from "../styles/AddCard.module.css";
 import FileInput from "./FileInput";
@@ -15,6 +15,7 @@ function AddCard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const { cards, isError, isSuccess } = useSelector((state) => state.card);
   const onChange = (e) => {
     setText(e.target.value);
   };
@@ -25,28 +26,9 @@ function AddCard() {
     const formData = new FormData();
     formData.append("file", image);
     formData.append("text", text);
-
     dispatch(setCard(formData));
-
-    // try {
-    //   const response = await axios({
-    //     method: "post",
-    //     url: "/card",
-    //     data: formData,
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //     withCredentials: true,
-    //   });
-
-    //   if (response.statusCode === 200) {
-    //     toast.success("Card added successfully");
-    //     setImage(null);
-    //     setText("");
-    //   }
-    // } catch (err) {
-    //   toast.error("Error adding card");
-    // }
+    setImage(null);
+    setText("");
   };
 
   const handleToggle = () => {

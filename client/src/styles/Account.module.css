@@ -1,6 +1,21 @@
 .account {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.account > span {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.account svg {
+  width: 24px;
+  height: 24px;
+}
+
+.account svg:last-child {
+  cursor: pointer;
 }
 
 .account > a {
@@ -10,6 +25,5 @@
   border-radius: 25px;
   background-color: rgb(151, 240, 163);
   color: #202020;
-  margin-left: 0.75rem;
   text-transform: uppercase;
 }

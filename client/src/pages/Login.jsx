@@ -36,8 +36,6 @@ function Login() {
       navigate("/");
     }
 
-    console.log("Effect");
-
     dispatch(reset());
   }, [user, isError, isSuccess, massage, dispatch, navigate]);
 

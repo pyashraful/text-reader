@@ -20,9 +20,9 @@ export default function Account() {
     <div className={classes.account}>
       {user ? (
         <>
-          <MdOutlineAccountCircle />
+          <MdOutlineAccountCircle className={classes.account_icon} />
           <span>{user.name}</span>
-          <MdLogout onClick={onLogout} />
+          <MdLogout onClick={onLogout} className={classes.account_icon} />
         </>
       ) : (
         <>

@@ -1,18 +1,30 @@
-.nav {
-  background-color: #f2f2f2;
-}
-
-.container {
-  max-width: 82rem;
+.logo {
+  width: 220px;
+  order: 2;
+  flex-basis: auto;
   margin: 0 auto;
+}
+.logoImg {
+  width: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.2rem;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 4rem;
+  background-color: #fff;
 }
+
+header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
 .nav_link {
   display: flex;
   align-items: center;
@@ -21,9 +33,13 @@
 .nav_button_container {
   display: flex;
   gap: 0.5rem;
+  order: 1;
 }
 
 .nav_account_container {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  order: 3;
+  width: 198px;
 }
