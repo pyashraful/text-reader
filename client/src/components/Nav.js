@@ -11,14 +11,16 @@ export default function Nav() {
       <header>
         <nav className={classes.nav}>
           <div className={classes.container}>
-            <div className={classes.logo}>
-              <Link to="/">
-                <img
-                  className={classes.logoImg}
-                  src="logo12.png"
-                  alt="Wall of Wonder. Click for home."
-                />
-              </Link>
+            <div className={classes.logo_container}>
+              <div className={classes.logo}>
+                <Link to="/">
+                  <img
+                    className={classes.logoImg}
+                    src="logo12.png"
+                    alt="Wall of Wonder. Click for home."
+                  />
+                </Link>
+              </div>
             </div>
             {/* <div className={classes.nav_link}> */}
             <div className={classes.nav_button_container}>
