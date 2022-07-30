@@ -3,40 +3,48 @@ import { useDropzone } from "react-dropzone";
 import classes from "../styles/FileInput.module.css";
 import { MdDeleteOutline } from "react-icons/md";
 
-function FileInput({ image, setImage }) {
+function FileInput({ image, setImage, setImgError, setImgErrorMsg }) {
   const [loading, setLoading] = useState({ loading: true });
   const [readable, setRadable] = useState();
 
   const onDrop = useCallback(
-    (acceptedFiles) => {
+    (acceptedFiles, fileRejections) => {
       let file = acceptedFiles[0];
-      console.log("🚀 ~ file: FileInput.js ~ line 13 ~ FileInput ~ file", file);
-      // file = new File([file], `ashraful_${+new Date()}`, {
-      //   type: file.type,
-      // });
-      console.log(file);
-      const reader = new FileReader();
-      reader.onloadstart = () => {
-        setLoading(true);
-      };
-      reader.onloadend = () => {
-        setLoading(false);
-      };
-      reader.onload = () => {
-        setRadable(reader.result);
-      };
-      reader.readAsDataURL(file);
-      setImage(file);
-      setImage(file);
-      console.log(image);
+      let rejectFile = fileRejections[0];
+
+      if (rejectFile) {
+        setImgError(true);
+        setImgErrorMsg(rejectFile.errors[0].message);
+        return;
+      }
+
+      if (file) {
+        setImage(false);
+        setImgError("");
+        const reader = new FileReader();
+        reader.onloadstart = () => {
+          setLoading(true);
+        };
+        reader.onloadend = () => {
+          setLoading(false);
+        };
+        reader.onload = () => {
+          setRadable(reader.result);
+        };
+        reader.readAsDataURL(file);
+        setImage(file);
+      }
     },
-    [image, setImage]
+    [setImage, setImgError, setImgErrorMsg]
   );
   const { getRootProps, getInputProps, open } = useDropzone({
-    // Disable click and keydown behavior
     noClick: true,
     noKeyboard: true,
     onDrop,
+    accept: {
+      "image/jpeg": [".jpeg", ".png"],
+    },
+    maxSize: 1000000,
   });
 
   return (

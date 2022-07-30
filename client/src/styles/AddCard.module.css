@@ -27,3 +27,12 @@
 .card_submit {
   margin-top: 1em;
 }
+
+.error {
+  margin: 0;
+  padding: 8px 16px;
+  background: #e34444;
+  display: inline-block;
+  margin-top: 10px;
+  border-radius: 5px;
+}

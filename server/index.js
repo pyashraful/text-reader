@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
-import http from "http";
 import cookieParser from "cookie-parser";
 import signinRouter from "./router/signinRouter.js";
 import signupRouter from "./router/signupRouter.js";
@@ -10,8 +9,6 @@ import logoutRouter from "./router/logoutRouter.js";
 import cardRouter from "./router/cardRouter.js";
 
 const app = express();
-
-const server = http.createServer(app);
 
 app.use(cors());
 app.use(express.json());
@@ -40,6 +37,6 @@ app.use("/signup", signupRouter);
 app.use("/logout", logoutRouter);
 app.use("/card", cardRouter);
 
-server.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`app listening to port ${process.env.PORT}`);
 });
