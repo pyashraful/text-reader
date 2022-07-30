@@ -18,9 +18,7 @@ export const register = createAsyncThunk(
       return await authService.register(user);
     } catch (error) {
       const massage =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
+        (error.response && error.response.data && error.response.data.error) ||
         error.message ||
         error.toString();
 
@@ -47,7 +45,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
     return await authService.logout();
   } catch (error) {
     const massage =
-      (error.response && error.response.data && error.response.data.message) ||
+      (error.response && error.response.data && error.response.data.error) ||
       error.message ||
       error.toString();
     return thunkApi.rejectWithValue({ massage });

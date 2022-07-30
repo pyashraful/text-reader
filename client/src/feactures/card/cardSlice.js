@@ -15,7 +15,7 @@ export const getCard = createAsyncThunk("card/getCard", async (_, thunkAPI) => {
     return await cardService.getCards();
   } catch (error) {
     const message =
-      (error.response && error.response.data && error.response.data.message) ||
+      (error.response && error.response.data && error.response.data.error) ||
       error.message ||
       error.toString();
     return thunkAPI.rejectWithValue(message);
@@ -29,9 +29,7 @@ export const setCard = createAsyncThunk(
       return await cardService.setCard(fromData);
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
+        (error.response && error.response.data && error.response.data.error) ||
         error.message ||
         error.toString();
       return thunkAPI.rejectWithValue(message);
@@ -46,9 +44,7 @@ export const deleteCard = createAsyncThunk(
       return await cardService.deleteCard(id);
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
+        (error.response && error.response.data && error.response.data.error) ||
         error.message ||
         error.toString();
       return thunkAPI.rejectWithValue(message);
