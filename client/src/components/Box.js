@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import data from "../data";
-import { MdDeleteOutline } from "react-icons/md";
+import { MdDeleteOutline, MdModeEditOutline } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { getCard, deleteCard, reset } from "../feactures/card/cardSlice";
 
@@ -34,14 +34,25 @@ const Box = ({ speakText }) => {
             <p className="info">{card.text}</p>
           </div>
           {card._id ? (
-            <div className="box_delete">
-              <button
-                className="box_delete_btn"
-                onClick={() => handleDelete(card._id)}
-              >
-                <MdDeleteOutline />
-              </button>
-            </div>
+            <>
+              <div className="box_edit">
+                <button
+                  className="box_edit_btn"
+                  onClick={() => handleDelete(card._id)}
+                >
+                  Edit
+                  <MdModeEditOutline size={16} />
+                </button>
+              </div>
+              <div className="box_delete">
+                <button
+                  className="box_delete_btn"
+                  onClick={() => handleDelete(card._id)}
+                >
+                  <MdDeleteOutline />
+                </button>
+              </div>
+            </>
           ) : null}
         </div>
       ))}

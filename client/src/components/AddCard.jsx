@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DropBox from "./DropBox";
 import classes from "../styles/AddCard.module.css";
 import FileInput from "./FileInput";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { setCard, reset } from "../feactures/card/cardSlice";
+import { setCard } from "../feactures/card/cardSlice";
 import { useNavigate } from "react-router-dom";
+
+// function EidtCard() {
+//   return <div>Edit Card</div>;
+// }
 
 function AddCard() {
   const [toggle, setToggle] = useState(false);
@@ -30,7 +34,7 @@ function AddCard() {
       dispatch(setCard(formData)).unwrap();
       toast.success("Card added successfully");
     } catch (error) {
-      toast.success("Erron");
+      toast.success("Error");
     }
 
     setImage(null);
