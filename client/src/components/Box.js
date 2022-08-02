@@ -13,14 +13,11 @@ import { CardInput } from "./AddCard";
 const Box = ({ speakText }) => {
   const [toggle, setToggle] = useState(false);
   const [initialState, setInitialState] = useState({});
+
   const dispatch = useDispatch();
   const { cards, isLoading, isError, isSuccess, massage } = useSelector(
     (state) => state.card
   );
-
-  useEffect(() => {
-    dispatch(getCard());
-  }, [dispatch]);
 
   function handleDelete(id) {
     dispatch(deleteCard(id));
@@ -34,10 +31,6 @@ const Box = ({ speakText }) => {
       image: card.imageUrl,
       text: card.text,
     });
-    console.log(
-      "🚀 ~ file: Box.js ~ line 30 ~ handleEdit ~ InitialState",
-      initialState
-    );
   }
 
   async function onSubmit(data) {
@@ -46,19 +39,19 @@ const Box = ({ speakText }) => {
     formData.append("text", data.text);
     const newData = { id: initialState.id, formData };
 
-    await dispatch(editCard(newData))
-      .unwrap()
-      .then(() => {
-        setInitialState({});
-        dispatch(getCard());
-        toast.success("Card updated successfully");
-      })
-      .catch(() => {
-        console.log(
-          "🚀 ~ file: Box.js ~ line 48 ~ onSubmit ~ dispatch editCard error"
-        );
-      });
+    try {
+      await dispatch(editCard(newData)).unwrap();
+      setInitialState({});
+      dispatch(getCard());
+      toast.success("Card updated successfully");
+    } catch (error) {}
   }
+
+  console.log("🚀 ~ file: Box.js ~ line 16 ~ Box ~ initialState", initialState);
+
+  useEffect(() => {
+    dispatch(getCard());
+  }, [dispatch]);
 
   return (
     <div className="main">

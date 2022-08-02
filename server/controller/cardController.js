@@ -83,12 +83,11 @@ export const editCard = async (req, res) => {
     }
     card.text = text;
     await card.save();
+    res.status(200).json(card);
   } catch (error) {
     console.log(
       "🚀 ~ file: cardController.js ~ line 57 ~ editCard ~ error",
       error
     );
   }
-
-  res.status(200).json("put");
 };
