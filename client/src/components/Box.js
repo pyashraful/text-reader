@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import data from "../data";
+import React, { useEffect, useState } from "react";
 import { MdDeleteOutline, MdModeEditOutline } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { getCard, deleteCard, reset } from "../feactures/card/cardSlice";
+import { CardInput } from "./AddCard";
 
 const Box = ({ speakText }) => {
+  const [toggle, setToggle] = useState(false);
+  const [initialState, setInitialState] = useState({});
   const dispatch = useDispatch();
   const { cards, isLoading, isError, isSuccess, massage } = useSelector(
     (state) => state.card
@@ -16,6 +18,28 @@ const Box = ({ speakText }) => {
 
   function handleDelete(id) {
     dispatch(deleteCard(id));
+  }
+
+  function handleEdit(card) {
+    console.log("Edit");
+    setToggle(!toggle);
+    setInitialState({
+      image: card.imageUrl,
+      text: card.text,
+    });
+    console.log(
+      "🚀 ~ file: Box.js ~ line 30 ~ handleEdit ~ InitialState",
+      initialState
+    );
+  }
+
+  function onSubmit(data) {
+    const formData = new FormData();
+    formData.append("file", data.image);
+    formData.append("text", data.text);
+    for (let key of formData.values()) {
+      console.log(key);
+    }
   }
 
   return (
@@ -38,7 +62,7 @@ const Box = ({ speakText }) => {
               <div className="box_edit">
                 <button
                   className="box_edit_btn"
-                  onClick={() => handleDelete(card._id)}
+                  onClick={() => handleEdit(card)}
                 >
                   Edit
                   <MdModeEditOutline size={16} />
@@ -56,6 +80,13 @@ const Box = ({ speakText }) => {
           ) : null}
         </div>
       ))}
+
+      <CardInput
+        onSubmit={onSubmit}
+        toggle={toggle}
+        setToggle={setToggle}
+        initialState={initialState}
+      />
     </div>
   );
 };

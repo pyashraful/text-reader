@@ -54,7 +54,7 @@ function FileInput({ image, setImage, setImgError, setImgErrorMsg }) {
           <div className={classes.image_wrapper}>
             <img
               className={classes.upload_image}
-              src={readable}
+              src={readable || image}
               alt="uploaded"
             />
           </div>

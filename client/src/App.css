@@ -241,9 +241,10 @@ textarea {
   transition: background-color 0.3s ease-in-out;
 }
 
-/* .box_delete_btn:hover {
-  background-color: rgb(144, 218, 150);
-} */
+.box_delete_btn:hover {
+  background-color: rgb(0 189 6 / 80%);
+  color: #fff;
+}
 
 .box_edit_btn {
   border: none;
@@ -261,7 +262,6 @@ textarea {
   gap: 5px;
   align-items: center;
   height: 24px;
-  padding: ;
   padding-left: 10px;
   padding-right: 10px;
   font-size: 12px;
@@ -277,7 +277,8 @@ textarea {
 }
 
 .box_edit_btn:hover {
-  box-shadow: 0 4px 14px 0 var(--successGreen);
+  background-color: rgb(0 189 6 / 80%);
+  color: #fff;
 }
 
 @media (max-width: 1100px) {
