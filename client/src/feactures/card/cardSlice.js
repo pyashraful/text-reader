@@ -51,6 +51,20 @@ export const deleteCard = createAsyncThunk(
     }
   }
 );
+export const editCard = createAsyncThunk(
+  "card/editCard",
+  async (id, fromData, thunkAPI) => {
+    try {
+      return await cardService.editCard(id, fromData);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.error) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 const cardSlice = createSlice({
   name: "card",
@@ -103,6 +117,21 @@ const cardSlice = createSlice({
         );
       })
       .addCase(deleteCard.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(editCard.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        // state.cards = state.cards.filter(
+        //   (card) => card._id !== action.payload.id
+        // );
+      })
+      .addCase(editCard.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

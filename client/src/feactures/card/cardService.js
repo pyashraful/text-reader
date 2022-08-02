@@ -25,11 +25,16 @@ const deleteCard = async (id) => {
   const response = await axios.delete(`/card/${id}`, config);
   return response.data;
 };
+const editCard = async (id, fromData) => {
+  const response = await axios.put(`/card/${id}`, fromData, config);
+  return response.data;
+};
 
 const cardService = {
   getCards,
   setCard,
   deleteCard,
+  editCard,
 };
 
 export default cardService;

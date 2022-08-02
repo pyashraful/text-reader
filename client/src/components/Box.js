@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MdDeleteOutline, MdModeEditOutline } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
-import { getCard, deleteCard, reset } from "../feactures/card/cardSlice";
+import {
+  getCard,
+  deleteCard,
+  editCard,
+  reset,
+} from "../feactures/card/cardSlice";
 import { CardInput } from "./AddCard";
 
 const Box = ({ speakText }) => {
@@ -24,6 +29,7 @@ const Box = ({ speakText }) => {
     console.log("Edit");
     setToggle(!toggle);
     setInitialState({
+      id: card._id,
       image: card.imageUrl,
       text: card.text,
     });
@@ -33,13 +39,26 @@ const Box = ({ speakText }) => {
     );
   }
 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     const formData = new FormData();
     formData.append("file", data.image);
     formData.append("text", data.text);
     for (let key of formData.values()) {
       console.log(key);
     }
+
+    await dispatch(editCard(initialState.id, formData))
+      .unwrap()
+      .then(() => {
+        console.log(
+          "🚀 ~ file: Box.js ~ line 45 ~ onSubmit ~ dispatch editCard"
+        );
+      })
+      .catch(() => {
+        console.log(
+          "🚀 ~ file: Box.js ~ line 48 ~ onSubmit ~ dispatch editCard error"
+        );
+      });
   }
 
   return (
