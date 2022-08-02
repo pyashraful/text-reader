@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdDeleteOutline, MdModeEditOutline } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import {
   getCard,
   deleteCard,
@@ -48,9 +49,9 @@ const Box = ({ speakText }) => {
     await dispatch(editCard(newData))
       .unwrap()
       .then(() => {
-        console.log(
-          "🚀 ~ file: Box.js ~ line 45 ~ onSubmit ~ dispatch editCard"
-        );
+        setInitialState({});
+        dispatch(getCard());
+        toast.success("Card updated successfully");
       })
       .catch(() => {
         console.log(

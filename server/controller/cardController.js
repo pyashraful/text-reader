@@ -65,3 +65,30 @@ export const deleteCard = async (req, res) => {
 
   res.status(200).json({ id });
 };
+
+export const editCard = async (req, res) => {
+  const { id } = req.params;
+  const { file } = req;
+  const text = req.body.text;
+  try {
+    const card = await Card.findById(id);
+    if (!card) {
+      res.status(404).send("massage: 👎");
+    }
+    if (file) {
+      const result = await uploadFile(file);
+      await deleteFile(card.imageKey);
+      card.imageUrl = result.Location;
+      card.imageKey = result.Key;
+    }
+    card.text = text;
+    await card.save();
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: cardController.js ~ line 57 ~ editCard ~ error",
+      error
+    );
+  }
+
+  res.status(200).json("put");
+};
