@@ -43,11 +43,9 @@ const Box = ({ speakText }) => {
     const formData = new FormData();
     formData.append("file", data.image);
     formData.append("text", data.text);
-    for (let key of formData.values()) {
-      console.log(key);
-    }
+    const newData = { id: initialState.id, formData };
 
-    await dispatch(editCard(initialState.id, formData))
+    await dispatch(editCard(newData))
       .unwrap()
       .then(() => {
         console.log(

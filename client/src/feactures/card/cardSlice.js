@@ -53,9 +53,10 @@ export const deleteCard = createAsyncThunk(
 );
 export const editCard = createAsyncThunk(
   "card/editCard",
-  async (id, fromData, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      return await cardService.editCard(id, fromData);
+      console.log("🚀 ~ file: cardSlice.js ~ line 57 ~ data", data);
+      return await cardService.editCard(data);
     } catch (error) {
       const message =
         (error.response && error.response.data && error.response.data.error) ||
