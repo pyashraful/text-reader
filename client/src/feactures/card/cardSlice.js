@@ -86,7 +86,7 @@ const cardSlice = createSlice({
       .addCase(getCard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.cards.push(...action.payload);
+        state.cards.unshift(...action.payload);
       })
       .addCase(getCard.rejected, (state, action) => {
         state.isLoading = false;
@@ -100,7 +100,7 @@ const cardSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
 
-        state.cards.push(action.payload);
+        state.cards.unshift(action.payload);
       })
       .addCase(setCard.rejected, (state, action) => {
         state.isLoading = false;
@@ -128,9 +128,9 @@ const cardSlice = createSlice({
       .addCase(editCard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        // state.cards = state.cards.filter(
-        //   (card) => card._id !== action.payload.id
-        // );
+        state.cards = state.cards.filter(
+          (card) => card._id !== action.payload._id
+        );
       })
       .addCase(editCard.rejected, (state, action) => {
         state.isLoading = false;

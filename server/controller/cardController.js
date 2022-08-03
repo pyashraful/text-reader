@@ -9,11 +9,6 @@ export async function setCard(req, res) {
   const { file, user } = req;
   const text = req.body.text;
 
-  console.log(
-    "🚀 ~ file: iamgeController.js ~ line 6 ~ imageUpload ~ text",
-    file
-  );
-
   let card;
   try {
     const result = await uploadFile(file);
@@ -78,16 +73,14 @@ export const editCard = async (req, res) => {
     if (file) {
       const result = await uploadFile(file);
       await deleteFile(card.imageKey);
+      await unlinkFile(file.path);
       card.imageUrl = result.Location;
       card.imageKey = result.Key;
     }
     card.text = text;
-    await card.save();
+    await Card.findByIdAndUpdate(card.id, card);
     res.status(200).json(card);
   } catch (error) {
-    console.log(
-      "🚀 ~ file: cardController.js ~ line 57 ~ editCard ~ error",
-      error
-    );
+    res.status(500).send(error);
   }
 };
