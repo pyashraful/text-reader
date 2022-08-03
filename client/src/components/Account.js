@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../feactures/auth/authSlice";
+import { resetCard } from "../feactures/card/cardSlice";
 import { MdLogout } from "react-icons/md";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import classes from "../styles/Account.module.css";
@@ -11,9 +12,9 @@ export default function Account() {
   const dispatch = useDispatch();
 
   function onLogout() {
-    console.log("logout");
     dispatch(logout());
     dispatch(reset());
+    dispatch(resetCard());
   }
 
   return (

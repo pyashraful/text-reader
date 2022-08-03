@@ -71,7 +71,8 @@ const cardSlice = createSlice({
   name: "card",
   initialState,
   reducers: {
-    reset: (state) => {
+    resetCard: (state) => {
+      state.cards = initialState.cards;
       state.isError = false;
       state.isLoading = false;
       state.isSuccess = false;
@@ -140,5 +141,5 @@ const cardSlice = createSlice({
   },
 });
 
-export const { reset } = cardSlice.actions;
+export const { resetCard } = cardSlice.actions;
 export default cardSlice.reducer;
