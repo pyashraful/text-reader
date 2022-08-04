@@ -32,10 +32,10 @@ mongoose
 //   .catch((err) => console.log(err));
 
 //Router
-app.use("/signin", signinRouter);
-app.use("/signup", signupRouter);
-app.use("/logout", logoutRouter);
-app.use("/card", cardRouter);
+app.use("/api/signin", signinRouter);
+app.use("/api/signup", signupRouter);
+app.use("/api/logout", logoutRouter);
+app.use("/api/cards", cardRouter);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log(`app listening to port ${process.env.PORT}`);

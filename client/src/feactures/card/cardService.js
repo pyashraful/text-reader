@@ -1,11 +1,12 @@
 import axios from "axios";
 
+const API_URL = "/api/cards/";
 const config = {
   withCredentials: true,
 };
 
 const getCards = async () => {
-  const response = await axios.get("/card", config);
+  const response = await axios.get(API_URL, config);
   // if (response.data) {
   //   localStorage.setItem("card", JSON.stringify(response.data));
   // }
@@ -13,7 +14,7 @@ const getCards = async () => {
 };
 
 const setCard = async (fromData) => {
-  const response = await axios.post("/card", fromData, config);
+  const response = await axios.post(API_URL, fromData, config);
   console.log(
     "🚀 ~ file: cardService.js ~ line 17 ~ setCard ~ response",
     response.data
@@ -22,7 +23,7 @@ const setCard = async (fromData) => {
 };
 
 const deleteCard = async (id) => {
-  const response = await axios.delete(`/card/${id}`, config);
+  const response = await axios.delete(API_URL + id, config);
   return response.data;
 };
 const editCard = async (data) => {
@@ -32,7 +33,7 @@ const editCard = async (data) => {
     console.log(pair[0] + ", " + pair[1]);
   }
 
-  const response = await axios.put(`/card/${id}`, formData, config);
+  const response = await axios.put(API_URL + id, formData, config);
   console.log(
     "🚀 ~ file: cardService.js ~ line 36 ~ editCard ~ response",
     response
