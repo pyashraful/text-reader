@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const API_URL = "/signup";
-
 const register = async (userData) => {
-  const response = await axios.post(API_URL, userData);
+  const response = await axios.post("/api/signup/", userData);
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
   }
@@ -11,7 +9,7 @@ const register = async (userData) => {
 };
 
 const login = async (userData) => {
-  const response = await axios.post("/signin", userData);
+  const response = await axios.post("/api/signin/", userData);
   console.log(
     "🚀 ~ file: authService.js ~ line 15 ~ login ~ response",
     response
@@ -28,7 +26,7 @@ const login = async (userData) => {
 };
 
 const logout = async () => {
-  const response = await axios.post("/logout");
+  const response = await axios.post("/api/logout/");
   console.log(
     "🚀 ~ file: authService.js ~ line 24 ~ logout ~ response",
     response
