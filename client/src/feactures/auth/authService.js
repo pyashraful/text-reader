@@ -10,18 +10,10 @@ const register = async (userData) => {
 
 const login = async (userData) => {
   const response = await axios.post("/api/signin/", userData);
-  console.log(
-    "🚀 ~ file: authService.js ~ line 15 ~ login ~ response",
-    response
-  );
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
   }
-  console.log(
-    "🚀 ~ file: authService.js ~ line 17 ~ login ~ response.data",
-    response.data
-  );
   return response.data;
 };
 
