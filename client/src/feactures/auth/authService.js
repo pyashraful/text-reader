@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const register = async (userData) => {
-  const response = await axios.post("/api/signup/", userData);
+  const response = await axios.post("/api/users", userData);
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
   }
@@ -9,7 +9,7 @@ const register = async (userData) => {
 };
 
 const login = async (userData) => {
-  const response = await axios.post("/api/signin/", userData);
+  const response = await axios.post("/api/users/signin", userData);
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
@@ -18,7 +18,7 @@ const login = async (userData) => {
 };
 
 const logout = async () => {
-  const response = await axios.post("/api/logout/");
+  const response = await axios.post("/api/users/logout");
   console.log(
     "🚀 ~ file: authService.js ~ line 24 ~ logout ~ response",
     response

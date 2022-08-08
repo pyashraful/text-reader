@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
-import signinRouter from "./router/signinRouter.js";
-import signupRouter from "./router/signupRouter.js";
-import logoutRouter from "./router/logoutRouter.js";
 import cardRouter from "./router/cardRouter.js";
+import userRouter from "./router/userRouter.js";
 
 const app = express();
 
@@ -23,18 +21,7 @@ mongoose
   .then(() => console.log("database connection successful!"))
   .catch((err) => console.log(err));
 
-// mongoose
-//   .connect(process.env.MONGO_CONNECTION_STRING, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("database connection successful!"))
-//   .catch((err) => console.log(err));
-
-//Router
-app.use("/api/signin", signinRouter);
-app.use("/api/signup", signupRouter);
-app.use("/api/logout", logoutRouter);
+app.use("/api/users", userRouter);
 app.use("/api/cards", cardRouter);
 
 app.listen(process.env.PORT || 5000, () => {
