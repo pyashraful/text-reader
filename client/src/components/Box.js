@@ -14,6 +14,7 @@ import { CardInput } from "./AddCard";
 import useRead from "../hooks/useRead";
 
 const Box = () => {
+  const [active, setActive] = useState();
   const [toggle, setToggle] = useState(false);
   const [initialState, setInitialState] = useState({});
   const { selected } = useSelector((state) => state.speak);
@@ -53,7 +54,10 @@ const Box = () => {
     } catch (error) {}
   }
 
-  console.log("🚀 ~ file: Box.js ~ line 16 ~ Box ~ initialState", initialState);
+  function handleSpeak(text, id) {
+    speakText(text);
+    setActive(id);
+  }
 
   useEffect(() => {
     dispatch(getCard());
@@ -63,7 +67,10 @@ const Box = () => {
     <div className="main">
       {cards.map((card, index) => (
         <div key={index} className="box_container">
-          <div onClick={() => speakText(card.text)} className="box">
+          <div
+            onClick={() => handleSpeak(card.text, index)}
+            className={`box ${active === index && isReading ? "box_glow" : ""}`}
+          >
             <img
               src={
                 card.image
@@ -72,6 +79,7 @@ const Box = () => {
               }
               alt="text"
             />
+
             <p className="info">{card.text}</p>
           </div>
           {card._id ? (
