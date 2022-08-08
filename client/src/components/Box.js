@@ -8,11 +8,17 @@ import {
   editCard,
   reset,
 } from "../feactures/card/cardSlice";
-import { CardInput } from "./AddCard";
+import { selecteText } from "../feactures/speak/speakSlice";
 
-const Box = ({ speakText }) => {
+import { CardInput } from "./AddCard";
+import useRead from "../hooks/useRead";
+
+const Box = () => {
   const [toggle, setToggle] = useState(false);
   const [initialState, setInitialState] = useState({});
+  const { selected } = useSelector((state) => state.speak);
+  console.log("🚀 ~ file: Box.js ~ line 20 ~ Box ~ selected", selected);
+  const { isReading, speakText } = useRead(selected);
 
   const dispatch = useDispatch();
   const { cards, isLoading, isError, isSuccess, massage } = useSelector(

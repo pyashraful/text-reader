@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const voice = JSON.parse(localStorage.getItem("voice"));
+
 const initialState = {
   voices: [],
-  selected: "",
+  selected: voice ? voice : "",
 };
 
 const speakSlice = createSlice({
@@ -12,17 +14,12 @@ const speakSlice = createSlice({
     getVoices: (state, action) => {
       state.voices = action.payload;
     },
-    selecteText: (state, action) => {
+    selectedVoice: (state, action) => {
       state.selected = action.payload;
-    },
-    read: (state, action) => {
-      const synth = window.speechSynthesis;
-      const utter = new SpeechSynthesisUtterance(action.payload);
-      utter.voice = synth.getVoices().find((v) => v.name === state.selected);
-      synth.speak(utter);
+      localStorage.setItem("voice", JSON.stringify(action.payload));
     },
   },
 });
 
-export const { read, getVoices, selecteText } = speakSlice.actions;
+export const { read, getVoices, selectedVoice } = speakSlice.actions;
 export default speakSlice.reducer;

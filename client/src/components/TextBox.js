@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { read, selecteText } from "../feactures/speak/speakSlice";
+import { selectedVoice } from "../feactures/speak/speakSlice";
+import useRead from "../hooks/useRead";
 
 const TextBox = () => {
   const [toggle, setToggle] = useState(false);
@@ -8,8 +9,10 @@ const TextBox = () => {
   const dispatch = useDispatch();
   const { voices, selected } = useSelector((state) => state.speak);
 
+  const { speakText } = useRead(selected);
+
   function handleChange(e) {
-    dispatch(selecteText(e.target.value));
+    dispatch(selectedVoice(e.target.value));
   }
 
   return (
@@ -35,10 +38,7 @@ const TextBox = () => {
           onChange={(e) => setMassage(e.target.value)}
           placeholder="Enter text to read..."
         ></textarea>
-        <button
-          onClick={() => dispatch(read(massage))}
-          className="btn text_btn"
-        >
+        <button onClick={() => speakText(massage)} className="btn text_btn">
           Read Text
         </button>
       </div>

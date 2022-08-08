@@ -3,15 +3,17 @@ import "../App.css";
 import Box from "../components/Box";
 import { useDispatch } from "react-redux";
 import { read, getVoices } from "../feactures/speak/speakSlice";
+import useRead from "../hooks/useRead";
 
 function Home() {
   const dispatch = useDispatch();
+  // const { speakText } = useRead();
 
-  function speakText(text) {
-    dispatch(read(text));
-  }
+  // function speakText(text) {
+  //   dispatch(read(text));
+  // }
 
-  return <Box speakText={speakText} />;
+  return <Box />;
 }
 
 export default Home;
