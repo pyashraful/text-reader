@@ -9,16 +9,12 @@ async function validate(req, res, next) {
 
     try {
       const { id } = jwt.verify(token, process.env.JWT_SECRET);
-      console.log("🚀 ~ file: validate.js ~ line 12 ~ validate ~ id", id);
+
       user = await User.findById(id);
-      console.log("🚀 ~ file: validate.js ~ line 15 ~ validate ~ user", user);
+
       if (!user) {
-        console.log(
-          "🚀 ~ file: validate.js ~ line 17 ~ validate ~ Unauthorized"
-        );
         return res.status(401).send("Unauthorized");
       } else {
-        console.log("🚀 ~ file: validate.js ~ line 20 ~ validate ~ ok");
         req.user = user;
         next();
       }
@@ -26,7 +22,6 @@ async function validate(req, res, next) {
       return res.status(401).send("Unauthorized");
     }
   } else {
-    console.log("🚀 ~ file: validate.js ~ line 29 ~ validate ~ Unauthorized");
     return res.status(401).send("Unauthorized");
   }
 }

@@ -32,12 +32,8 @@ export async function setCard(req, res) {
 
 export async function getCard(req, res) {
   const id = req.user;
-  console.log("🚀 ~ file: cardController.js ~ line 38 ~ getCard ~ id", id);
+
   const cards = await Card.find({ user: id });
-  console.log(
-    "🚀 ~ file: cardController.js ~ line 40 ~ getCard ~ cards",
-    cards
-  );
 
   res.status(200).json(cards);
 }
@@ -51,12 +47,7 @@ export const deleteCard = async (req, res) => {
     }
     await deleteFile(card.imageKey);
     await Card.deleteOne({ _id: id });
-  } catch (error) {
-    console.log(
-      "🚀 ~ file: cardController.js ~ line 42 ~ deleteCard ~ error",
-      error
-    );
-  }
+  } catch (error) {}
 
   res.status(200).json({ id });
 };

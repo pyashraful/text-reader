@@ -19,14 +19,8 @@ const login = async (userData) => {
 
 const logout = async () => {
   const response = await axios.post("/api/users/logout");
-  console.log(
-    "🚀 ~ file: authService.js ~ line 24 ~ logout ~ response",
-    response
-  );
-  console.log("authService logout");
 
   if (response.status === 200) {
-    console.log("logged out");
     localStorage.removeItem("user");
   }
 

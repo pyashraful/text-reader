@@ -28,16 +28,9 @@ const deleteCard = async (id) => {
 };
 const editCard = async (data) => {
   const { id, formData } = data;
-  console.log("🚀 ~ file: cardService.js ~ line 30 ~ editCard ~ id", id);
-  for (var pair of formData.entries()) {
-    console.log(pair[0] + ", " + pair[1]);
-  }
 
   const response = await axios.put(API_URL + id, formData, config);
-  console.log(
-    "🚀 ~ file: cardService.js ~ line 36 ~ editCard ~ response",
-    response
-  );
+
   return response.data;
 };
 

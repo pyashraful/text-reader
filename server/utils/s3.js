@@ -33,6 +33,6 @@ export async function deleteFile(key) {
     Key: key,
   };
   const data = await s3.deleteObject(params).promise();
-  console.log("🚀 ~ file: s3.js ~ line 36 ~ deleteFile ~ data", data);
+
   return data;
 }

@@ -66,7 +66,7 @@ export async function logout(req, res) {
         path: "/",
       })
     );
-    console.log("logout server");
+
     res.send({ message: "Logout success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
