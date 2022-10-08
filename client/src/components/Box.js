@@ -13,9 +13,7 @@ const Box = () => {
   const [toggle, setToggle] = useState(false);
   const [initialState, setInitialState] = useState({});
   const { selected } = useSelector((state) => state.speak);
-  console.log("🚀 ~ file: Box.js ~ line 20 ~ Box ~ selected", selected);
   const { isReading, speakText } = useRead(selected);
-  console.log("🚀 ~ file: Box.js ~ line 18 ~ Box ~ isReading", isReading);
 
   const dispatch = useDispatch();
   const { cards, isLoading, isError, isSuccess, massage } = useSelector(
@@ -65,6 +63,7 @@ const Box = () => {
         <div key={index} className="box_container">
           <div
             onClick={() => handleSpeak(card.text, index)}
+            style={{ cursor: `${isReading ? "not-allowed" : "pointer"}` }}
             className={`box ${active === index && isReading ? "box_glow" : ""}`}
           >
             <img
