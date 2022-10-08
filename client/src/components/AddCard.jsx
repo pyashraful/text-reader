@@ -29,10 +29,6 @@ export function CardInput({ onSubmit, initialState = {}, toggle, setToggle }) {
   useEffect(() => {
     initialState.image && setImage(initialState.image);
     initialState.text && setText(initialState.text);
-    console.log(
-      "🚀 ~ file: AddCard.jsx ~ line 30 ~ useEffect ~ initialState",
-      initialState
-    );
   }, [initialState]);
 
   return (

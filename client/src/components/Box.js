@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MdDeleteOutline, MdModeEditOutline } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import {
-  getCard,
-  deleteCard,
-  editCard,
-  reset,
-} from "../feactures/card/cardSlice";
+import { getCard, deleteCard, editCard } from "../feactures/card/cardSlice";
 import { selecteText } from "../feactures/speak/speakSlice";
 
 import { CardInput } from "./AddCard";
@@ -20,6 +15,7 @@ const Box = () => {
   const { selected } = useSelector((state) => state.speak);
   console.log("🚀 ~ file: Box.js ~ line 20 ~ Box ~ selected", selected);
   const { isReading, speakText } = useRead(selected);
+  console.log("🚀 ~ file: Box.js ~ line 18 ~ Box ~ isReading", isReading);
 
   const dispatch = useDispatch();
   const { cards, isLoading, isError, isSuccess, massage } = useSelector(
@@ -31,7 +27,6 @@ const Box = () => {
   }
 
   function handleEdit(card) {
-    console.log("Edit");
     setToggle(!toggle);
     setInitialState({
       id: card._id,
@@ -55,6 +50,7 @@ const Box = () => {
   }
 
   function handleSpeak(text, id) {
+    if (isReading) return;
     speakText(text);
     setActive(id);
   }
