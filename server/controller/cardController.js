@@ -21,12 +21,8 @@ export async function setCard(req, res) {
     await card.save();
     await unlinkFile(file.path);
   } catch (error) {
-    console.log(
-      "🚀 ~ file: iamgeController.js ~ line 18 ~ imageUpload ~ error",
-      error
-    );
+    res.status(500).json({ massage: error.message });
   }
-
   res.send(card);
 }
 
@@ -47,7 +43,9 @@ export const deleteCard = async (req, res) => {
     }
     await deleteFile(card.imageKey);
     await Card.deleteOne({ _id: id });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({ massage: error.message });
+  }
 
   res.status(200).json({ id });
 };
