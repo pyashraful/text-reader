@@ -33,6 +33,7 @@ export async function signup(req, res) {
 }
 
 export async function signin(req, res) {
+  console.log("🚀 ~ file: userController.js:36 ~ signin ~ req", req);
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
