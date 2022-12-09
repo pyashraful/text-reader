@@ -4,7 +4,7 @@ import AddCart from "./AddCard";
 import { Link } from "react-router-dom";
 import TextBox from "./TextBox";
 import classes from "../styles/Nav.module.css";
-import logo from "./logo.png";
+import logo from "../logo12.png";
 
 export default function Nav() {
   return (
