@@ -4,6 +4,7 @@ import AddCart from "./AddCard";
 import { Link } from "react-router-dom";
 import TextBox from "./TextBox";
 import classes from "../styles/Nav.module.css";
+import logo from "./logo.png";
 
 export default function Nav() {
   return (
@@ -16,7 +17,7 @@ export default function Nav() {
                 <Link to="/">
                   <img
                     className={classes.logoImg}
-                    src="logo12.png"
+                    src={logo}
                     alt="Wall of Wonder. Click for home."
                   />
                 </Link>
