@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Account from "./Account";
 import AddCart from "./AddCard";
 import { Link } from "react-router-dom";
