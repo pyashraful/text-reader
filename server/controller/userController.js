@@ -33,6 +33,7 @@ export async function signup(req, res) {
 }
 
 export async function signin(req, res) {
+  console.log("🚀 ~ file: authController.js:8 ~ signin ~ req.body", req.body);
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
