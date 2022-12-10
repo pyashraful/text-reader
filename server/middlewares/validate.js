@@ -5,10 +5,12 @@ async function validate(req, res, next) {
   const token = req.cookies.TOKEN;
 
   if (token) {
+    console.log("🚀 ~ file: validate.js:8 ~ validate ~ token", token);
     let user;
 
     try {
       const { id } = jwt.verify(token, process.env.JWT_SECRET);
+      console.log("🚀 ~ file: validate.js:12 ~ validate ~ id", id);
 
       user = await User.findById(id);
 
