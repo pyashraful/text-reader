@@ -1,3 +1,3 @@
-const allowedOrigins = ["https://textreader.onrender.com"];
+const allowedOrigins = ["localhost", "https://textreader.onrender.com"];
 
 export default allowedOrigins;
