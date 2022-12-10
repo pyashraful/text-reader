@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import corsOptions from "./config/corsOptions.js";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
 import cardRouter from "./router/cardRouter.js";
@@ -8,7 +9,7 @@ import userRouter from "./router/userRouter.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
